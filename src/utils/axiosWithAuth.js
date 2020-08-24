@@ -7,6 +7,6 @@ export const axiosWithAuth = () => {
         headers: {
             Authorization: token
         },
-        baseURL: ''
+        baseURL: 'https://wunderlist-bw820.herokuapp.com/'
     });
 };
