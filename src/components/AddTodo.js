@@ -1,7 +1,12 @@
 import React, { useState } from 'react'
 
 function AddToDo() {
-    const [form, setForm] = useState({})
+    const initialFormValue = {
+        todo: '',
+        category: ''
+
+    }
+    const [form, setForm] = useState(initialFormValue)
 
     const handleChange = (e) => {
     setForm({
@@ -11,6 +16,8 @@ function AddToDo() {
 }
 
     const handleSubmit = (e) => {
+        e.preventDefault()
+        console.log(form)
     //axios post
     //redirect to ToDoList
     //apply timestamp
@@ -22,16 +29,21 @@ function AddToDo() {
                 <div>
                     <input
                         type='input'
-                        name='addTask'
+                        name='todo'
                         placeholder='Add Task'
-                        value={form.value}
+                        value={form.todo}
                         onChange={handleChange}
                         />
                         
                 </div>
                 <div>
-                    <label forHtml='category'>Select Category: </label>
-                    <select id='category' name='category'>
+                    <label>Select Category: </label>
+                    <select
+                        id='category'
+                        name='category'
+                        value={form.category}
+                        onChange={handleChange}
+                        >
                         <option value='todo'>To Do</option>
                         <option value='work'>Work</option>
                         <option value='shopping'>Shopping</option>
