@@ -9,6 +9,7 @@ const Dashboard = () => {
 
     return ( 
         <>
+            <h1>Dashboard</h1>
             <UserProfile />
             <TodoList />
             <AddTodo />
