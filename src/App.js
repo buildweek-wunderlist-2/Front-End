@@ -1,6 +1,7 @@
 import React from 'react';
 import Login from './components/Login'
 import AddToDo from './components/AddTodo'
+import AddList from './components/AddList'
 import './App.css';
 import { Route, Link } from 'react-router-dom'
 import SignUp from './components/SignUpFiles/Signup'
@@ -18,6 +19,7 @@ function App() {
           <SignUp />
         </Route>
       </>
+      <AddList />
       <AddToDo />
     </div>
   );

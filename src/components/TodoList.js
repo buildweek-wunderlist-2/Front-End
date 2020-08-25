@@ -15,7 +15,7 @@ function TodoList() {
                 <button>Edit List</button>
                 <button>Delete List</button>
             </div>
-        </div>
+        </div> 
     )
 }
 export default TodoList

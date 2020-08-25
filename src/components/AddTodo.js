@@ -1,56 +1,60 @@
 import React, { useState } from 'react'
+import { axiosWithAuth } from '../utils/axiosWithAuth'
 
 function AddToDo() {
     const initialFormValue = {
-        todo: '',
-        category: ''
+        id: '',
+        name: '',
+        completed: '',
+        list_id: ''
     }
     const [form, setForm] = useState(initialFormValue)
 
     const handleChange = (e) => {
-    setForm({
-        ...form,
-        [e.target.name]: e.target.value
-    })
-}
+        setForm({
+            ...form,
+            [e.target.name]: e.target.value
+        })
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault()
         console.log(form)
-    //axios post
-    //redirect to ToDoList
-    //apply timestamp
-}
+        axiosWithAuth()
+            .post('')
+        //redirect to ToDoList
+        //apply timestamp
+    }
 
-    return(
+    return (
         <div>
             <h1>Add List Item</h1>
             <form onSubmit={handleSubmit}>
                 <div>
-                    <input
-                        type='input'
-                        name='todo'
-                        placeholder='Add Task'
-                        value={form.todo}
-                        onChange={handleChange}
-                        />
-                        
-                </div>
-                <div>
-                    <label>Select Category: </label>
+                    <label>Select List: </label>
                     <select
-                        id='category'
-                        name='category'
+                        name='list'
                         value={form.category}
                         onChange={handleChange}
-                        >
-                        <option value='todo'>To Do</option>
-                        <option value='work'>Work</option>
-                        <option value='shopping'>Shopping</option>
+                    >
+                        {/* map over list id's for values here */}
+                        <option value='1'>To Do</option>
+                        <option value='2'>Work</option>
+                        <option value='3'>Shopping</option>
                     </select>
                 </div>
                 <div>
-                <button>Add</button>
+                    <input
+                        type='input'
+                        name='name'
+                        placeholder='Add Task'
+                        value={form.todo}
+                        onChange={handleChange}
+                    />
+
+                </div>
+                <div>
+                    <button>Add</button>
                 </div>
             </form>
         </div>
