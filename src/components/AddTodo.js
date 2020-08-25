@@ -4,7 +4,6 @@ function AddToDo() {
     const initialFormValue = {
         todo: '',
         category: ''
-
     }
     const [form, setForm] = useState(initialFormValue)
 
@@ -25,6 +24,7 @@ function AddToDo() {
 
     return(
         <div>
+            <h1>Add List Item</h1>
             <form onSubmit={handleSubmit}>
                 <div>
                     <input
