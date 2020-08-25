@@ -1,6 +1,7 @@
 import React from 'react';
 import Login from './components/LogInFiles/Login'
 import AddToDo from './components/AddTodo'
+import AddList from './components/AddList'
 import Dashboard from './components/Dashboard';
 import PrivateRoute from './components/PrivateRoute';
 import './App.css';
@@ -28,6 +29,7 @@ function App() {
           <PrivateRoute exact path='/protected' component={Dashboard} />
         </Switch>
       </>
+      <AddList />
       <AddToDo />
     </div>
   );
