@@ -1,11 +1,16 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { connect } from 'react-redux'
+import { createListItem } from '../actions/actions'
+import axios from 'axios'
 import { axiosWithAuth } from '../utils/axiosWithAuth'
 
-function AddToDo() {
+
+
+function AddToDo(props) {
+    const [list, setList] = useState([])
     const initialFormValue = {
-        id: '',
         name: '',
-        completed: '',
+        completed: false,
         list_id: ''
     }
     const [form, setForm] = useState(initialFormValue)
@@ -20,11 +25,19 @@ function AddToDo() {
     const handleSubmit = (e) => {
         e.preventDefault()
         console.log(form)
-        axiosWithAuth()
-            .post('')
-        //redirect to ToDoList
-        //apply timestamp
+
+        props.createListItem(form)
     }
+
+    
+    useEffect(() => {
+        axiosWithAuth()
+            .get('/api/lists')
+            .then((res) => {
+                setList(res.data.data)
+            })
+            .catch((err) => console.log(err))
+    }, [])
 
     return (
         <div>
@@ -34,13 +47,12 @@ function AddToDo() {
                     <label>Select List: </label>
                     <select
                         name='list'
-                        value={form.category}
+                        value={form.list}
                         onChange={handleChange}
                     >
-                        {/* map over list id's for values here */}
-                        <option value='1'>To Do</option>
-                        <option value='2'>Work</option>
-                        <option value='3'>Shopping</option>
+                        {list.map((item) => {
+                            return <option value={item.list_id}>{item.name}</option>
+                        })}
                     </select>
                 </div>
                 <div>
@@ -48,10 +60,9 @@ function AddToDo() {
                         type='input'
                         name='name'
                         placeholder='Add Task'
-                        value={form.todo}
+                        value={form.name}
                         onChange={handleChange}
                     />
-
                 </div>
                 <div>
                     <button>Add</button>
@@ -60,4 +71,10 @@ function AddToDo() {
         </div>
     )
 }
-export default AddToDo
+const mapStateToProps = (state) => {
+    return ({
+        name: state.name,
+        list_id: state.list_id
+    })
+}
+export default connect(mapStateToProps, { createListItem })(AddToDo)

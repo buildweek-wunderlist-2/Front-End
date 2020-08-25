@@ -6,7 +6,8 @@ import * as serviceWorker from './serviceWorker';
 import { BrowserRouter as Router } from 'react-router-dom'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
-import rootReducer from './reducers/reducer'
+import rootReducer from './reducers/index'
+
 
 const store = createStore(rootReducer)
 
