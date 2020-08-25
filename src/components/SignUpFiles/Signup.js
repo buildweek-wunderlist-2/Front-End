@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react"
 import * as yup from 'yup'
 import signupFormSchema from "./signupFormSchema"
+import { axiosWithAuth } from "../../utils/axiosWithAuth"
+import uuid from "react-uuid"
 
 
 
@@ -8,13 +10,13 @@ import signupFormSchema from "./signupFormSchema"
 export default function SignUp(props){
 
  const initialValues = {
-    name: '',
+    username: '',
     email: '',
     password: '',
  }
 
  const initialErrors = {
-     name: '',
+     username: '',
      email: '',
      password: '',
  }
@@ -23,14 +25,24 @@ export default function SignUp(props){
  const initialUsers = []
 
  const [values, setValues] = useState(initialValues)
+
  const [disabled, setDisabled] = useState(initialDisabled)
  const [users, setUsers] = useState(initialUsers)
  const [errors, setErrors] = useState(initialErrors)
 
- const postNewUser = newUser => {
-
-    setUsers([...users, newUser])
-    setValues(initialValues)
+ const postNewUser = () => {
+    
+    axiosWithAuth()
+    .post(`/api/auth/register`, newUser)
+    .then(res => {
+        console.log("postNewUser -> res.data", res.data)
+    })
+    .catch(err => console.log(err))
+    console.log("postNewUser -> newUser", newUser)
+    
+    
+    // setUsers([...users, newUser])
+    // setValues(initialValues)
 
  }
 
@@ -61,14 +73,15 @@ export default function SignUp(props){
 
  }
 
+ const newUser = {
+     username: values.username,
+     email: values.email,
+     password: values.password,
+     id: Date.now()
+ }
 
  const submit = evt => {
 
-    const newUser = {
-        name: values.name.trim(),
-        email: values.email.trim(),
-        password: values.password.trim(),
-    }
 
     evt.preventDefault()
     postNewUser(newUser)
@@ -92,14 +105,14 @@ export default function SignUp(props){
             <div>
                 <h2>Information Here</h2>
 
-                <label>Name: 
+                <label>Username: 
                     <input 
-                     value = {values.name}
+                     value = {values.username}
                      onChange = {inputChange}
-                     name = 'name'
+                     name = 'username'
                      type = 'text'
                     />
-                <div>{errors.name}</div>
+                <div>{errors.username}</div>
                 </label>
 
                 <label>Email: 
