@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios'
+import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 const initialFormValues = {
     username:'',
@@ -12,10 +13,13 @@ export default function Login(){
     const [userInfo, setUserInfo] = useState(initialFormValues)
     const [users, setUsers] = useState(initialUsers)
 
-    const postNew = (newOrder) => {
-   axios.post('https://reqres.in/api/users', newOrder)
+    const postNew = () => {
+   axiosWithAuth()
+   .post('/api/auth/login', newOrder)
     .then((res) => {
+        console.log("postNew -> res", res)
         setUsers([res.data, ...users])
+        
     })
     .catch((err) => {
         console.log(err)
@@ -32,13 +36,13 @@ export default function Login(){
             [name]:value,
         })
     }
-
+    
+    const newOrder = {
+        username: userInfo.username,
+        password: userInfo.password
+    }
     const submit = (evt) => {
         evt.preventDefault();
-        const newOrder ={
-            username: userInfo.username,
-            password: userInfo.password
-        }
         postNew(newOrder)
     }
 
