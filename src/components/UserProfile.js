@@ -7,20 +7,21 @@ const UserProfile = () => {
     const params = useParams();
 
     const fetchUser = id => {
+
         axiosWithAuth()
-            .get(`/api/users/${id}`)
+            .get(`/api/users/23`)
             .then(res => {
-                console.log(res.data);
+            console.log("UserProfile -> res", res)
             })
             .catch(err => {
-                console.log(err.response)
+            console.log("UserProfile -> err", err.response)
             })
     };
 
     useEffect(() => {
         fetchUser(params.id);
     }, [params.id]);
-
+    
     if (!user) {
         return <div>Loading user Profile...</div>
     }

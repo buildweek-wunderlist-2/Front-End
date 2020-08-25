@@ -3,6 +3,8 @@ import axios from "axios";
 import * as yup from "yup";
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
 import loginFormSchema from "./loginFormSchema";
+import { useHistory } from 'react-router-dom';
+
 
 const initialFormValues = {
   username: "",
@@ -18,16 +20,20 @@ const initialDisabled = true
 
 export default function Login() {
   const [userInfo, setUserInfo] = useState(initialFormValues);
-  const [users, setUsers] = useState(initialUsers);
   const [formErrors, setFormErrors] = useState(initialFormErrors);
+  const { push } = useHistory()
+
   const [disabled, setDisabled] = useState(initialDisabled)
 
-  const postNew = () => {
+  const login = () => {
     axiosWithAuth()
       .post("/api/auth/login", newOrder)
       .then((res) => {
-        console.log("postNew -> res", res);
-        setUsers([res.data, ...users]);
+        console.log("login -> user", res.data.data)
+                localStorage.setItem('token', res.data.token)
+                // setUserData(res.data.data)
+                push('/protected')
+                // console.log("login -> userData", userData)
       })
       .catch((err) => {
         console.log(err);
@@ -66,7 +72,7 @@ export default function Login() {
   };
   const submit = (evt) => {
     evt.preventDefault();
-    postNew(newOrder);
+    login(newOrder);
   };
    useEffect(() => {
     loginFormSchema.isValid(userInfo).then((valid) => {
@@ -76,37 +82,30 @@ export default function Login() {
 
   return (
     <div className="login">
-      <h3>User Name:</h3>
-      <input
-        value={userInfo.username}
-        onChange={inputChange}
-        name="username"
-        type="text"
-      />
-      <div>{formErrors.username}</div>
-      <h3>Password:</h3>
-      <input
-        value={userInfo.password}
-        onChange={inputChange}
-        name="password"
-        type="text"
-      />
-      <div>{formErrors.password}</div>
+      <form onSubmit={submit}>
 
-      <button disabled={disabled} onClick={submit}>Log In</button>
+        <h3>User Name:</h3>
+        <input
+          value={userInfo.username}
+          onChange={inputChange}
+          name="username"
+          type="text"
+        />
+        <div>{formErrors.username}</div>
+        <h3>Password:</h3>
+        <input
+          value={userInfo.password}
+          onChange={inputChange}
+          name="password"
+          type="password"
+        />
+        <div>{formErrors.password}</div>
 
-      {users.map((user) => {
-        return <LoginInfo key={user.id} user={user} />;
-      })}
+        <button disabled={disabled} >Log In</button>
+
+   
+      </form>
     </div>
   );
 }
 
-function LoginInfo({ user }) {
-  return (
-    <div>
-      <p>Username: {user.username}</p>
-      <p>Password:{user.password}</p>
-    </div>
-  );
-}
