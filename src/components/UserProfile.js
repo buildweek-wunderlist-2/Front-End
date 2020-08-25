@@ -5,18 +5,34 @@ import { useParams } from 'react-router-dom';
 const UserProfile = () => {
     const [user, setUser] = useState(null);
     const params = useParams();
+    const id = localStorage.getItem('id')
 
-    const fetchUser = id => {
+    const fetchUser = () => {
+        console.log('id -->', id)
 
         axiosWithAuth()
-            .get(`/api/users/23`)
+            .get(`/api/users/${id}`)
             .then(res => {
-            console.log("UserProfile -> res", res)
+            console.log("UserProfile -> res", res.data.data)
+            setUser(res.data.data)
             })
             .catch(err => {
             console.log("UserProfile -> err", err.response)
             })
     };
+
+    const deleteUser = user => {
+        axiosWithAuth()
+            .delete(`/api/users/${id}`)
+            .then(res => {
+                console.log(res)
+                localStorage.clear()
+                window.location.reload()
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
 
     useEffect(() => {
         fetchUser(params.id);
@@ -29,8 +45,9 @@ const UserProfile = () => {
     return (
         <div>
             <h1>User Profile</h1>
-            <h2>Name: </h2>
-            <h3>Email: </h3>
+            <h2>Username: {user.username}</h2>
+            <h3>Email: {user.email}</h3>
+            <button onClick={deleteUser}>Delete User</button>
         </div>
     );
 
