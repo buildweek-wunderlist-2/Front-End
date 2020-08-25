@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState } from 'react';
 import axios from 'axios'
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 import { useHistory } from 'react-router-dom';
@@ -8,29 +8,29 @@ const initialFormValues = {
     password:'',
 }
 
-const initialUsers = []
 
 export default function Login(){
     const [userInfo, setUserInfo] = useState(initialFormValues)
-    const [users, setUsers] = useState(initialUsers)
     const { push } = useHistory()
+    const [userData, setUserData] = useState()
 
     const login = () => {
         axiosWithAuth()
             .post('/api/auth/login', newOrder)
             .then((res) => {
-                console.log("login -> res", res)
-                localStorage.setItem('token', res.data.payload)
-                // setUsers(res.data)
+                console.log("login -> user", res.data.data)
+                localStorage.setItem('token', res.data.token)
+                setUserData(res.data.data)
                 push('/protected')
+                console.log("login -> userData", userData)
                 
             })
             .catch((err) => {
-            console.log("login -> err", err)
+                console.log("login -> err", err)
             })
-            .finally( ()=> {
-                setUserInfo(initialFormValues)
+            .finally(() => {
             })
+         
     }
 
     const inputChange = (evt) =>{
@@ -79,12 +79,6 @@ export default function Login(){
                 Log In
             </button>
           </form>
-
-          {
-              users.map( (user)=> {
-                  return <LoginInfo key={user.id} user={user}/>
-              })
-          }
 
         </div>
     )

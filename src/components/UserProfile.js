@@ -5,12 +5,11 @@ import { useParams } from 'react-router-dom';
 const UserProfile = () => {
     const [user, setUser] = useState(null);
     const params = useParams();
-    console.log("UserProfile -> params", params)
 
     const fetchUser = id => {
 
         axiosWithAuth()
-            .get(`/api/users/1598375372870`)
+            .get(`/api/users/23`)
             .then(res => {
             console.log("UserProfile -> res", res)
             })
