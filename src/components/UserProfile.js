@@ -5,22 +5,24 @@ import { useParams } from 'react-router-dom';
 const UserProfile = () => {
     const [user, setUser] = useState(null);
     const params = useParams();
+    console.log("UserProfile -> params", params)
 
     const fetchUser = id => {
+
         axiosWithAuth()
-            .get(`/api/users/${id}`)
+            .get(`/api/users/1598375372870`)
             .then(res => {
-                console.log(res.data);
+            console.log("UserProfile -> res", res)
             })
             .catch(err => {
-                console.log(err.response)
+            console.log("UserProfile -> err", err.response)
             })
     };
 
     useEffect(() => {
         fetchUser(params.id);
     }, [params.id]);
-
+    
     if (!user) {
         return <div>Loading user Profile...</div>
     }
