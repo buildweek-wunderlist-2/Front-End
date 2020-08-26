@@ -13,6 +13,7 @@ function AddToDo(props) {
         completed: false,
         list_id: ''
     }
+    
     const [form, setForm] = useState(initialFormValue)
 
     const handleChange = (e) => {
@@ -24,7 +25,11 @@ function AddToDo(props) {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log(form)
+        console.log('LIST', list)
+        axiosWithAuth()
+            .post(`/api/lists/${form.list_id}/tasks`, {name: form.name, list_id: form.list_id})
+            .then((res) => console.log(res))
+            .catch((err) => console.log(err))
 
         props.createListItem(form)
     }
@@ -46,12 +51,12 @@ function AddToDo(props) {
                 <div>
                     <label>Select List: </label>
                     <select
-                        name='list'
-                        value={form.list}
+                        name='list_id'
+                        // value={form.list_id}
                         onChange={handleChange}
                     >
                         {list.map((item) => {
-                            return <option value={item.list_id}>{item.name}</option>
+                            return <option key={item.id} value={item.id}>{item.name}</option>
                         })}
                     </select>
                 </div>
