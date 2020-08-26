@@ -38,6 +38,9 @@ export default function SignUp(props){
         console.log("postNewUser -> res.data", res)
         localStorage.setItem('token', res.data.token)
 
+    setUsers([...users, newUser])
+    setValues(initialValues)
+    console.log(newUser)
     })
     .catch(err => console.log(err))
     console.log("postNewUser -> newUser", newUser)
@@ -87,6 +90,7 @@ export default function SignUp(props){
 
     evt.preventDefault()
     postNewUser(newUser)
+
 
  }
 

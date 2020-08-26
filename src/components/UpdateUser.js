@@ -23,9 +23,9 @@ const UpdateUser = () => {
                 <input
                 type="text"
                 name="username"
-                onChange={}
+                // onChange={}
                 placeholder="username"
-                value={}
+                // value={}
                 />
                 <div className="baseline" />
                 <label>email</label>
@@ -33,9 +33,9 @@ const UpdateUser = () => {
                 <input
                 type="string"
                 name="email"
-                onChange={}
+                // onChange={}
                 placeholder="email"
-                value={}
+                // value={}
                 />
                 <div className="baseline" />
                 <label>password</label>
@@ -43,9 +43,9 @@ const UpdateUser = () => {
                 <input
                 type="password"
                 name="password"
-                onChange={}
+                // onChange={}
                 placeholder="password"
-                value={}
+                // value={}
                 />
                 <div className="baseline" />
                 
@@ -53,6 +53,6 @@ const UpdateUser = () => {
 
             </from>
         </div>
-    );
+    )
 };
 export default UpdateUser;

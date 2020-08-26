@@ -1,3 +1,4 @@
+
 import React from 'react'
 import { connect } from 'react-redux'
 import Todo from './Todo'
@@ -25,9 +26,11 @@ function TodoList(props) {
         </div>
     )
 }
+
 // const mapStateToProps = (state)=> {
 //     return({
 //       ...form
 //     })
 // }
-export default connect(null, {})(TodoList)
+export default TodoList
+
