@@ -47,7 +47,6 @@ const UserProfile = () => {
     if (!user) {
         return <div>Loading user Profile...</div>
     }
-
     return (
         <div>
             <h1>User Profile</h1>

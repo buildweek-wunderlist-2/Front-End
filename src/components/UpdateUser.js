@@ -58,7 +58,7 @@ const UpdateUser = props => {
                 type="text"
                 name="username"
                 onChange={changeHandler}
-                value={user.username}
+                // value={user.username}
                 />
                 <div className="baseline" />
                 <label>email</label>
@@ -68,7 +68,7 @@ const UpdateUser = props => {
                 name="email"
                 onChange={changeHandler}
                 placeholder="email"
-                value={user.email}
+                // value={user.email}
                 />
                 <div className="baseline" />
 
