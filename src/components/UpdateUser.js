@@ -6,8 +6,6 @@ const initialUser = {
     id: uuid(),
     username: '',
     email: '',
-    password: '',
-    time: '',
 };
 
 const UpdateUser = () => {
@@ -38,17 +36,7 @@ const UpdateUser = () => {
                 // value={}
                 />
                 <div className="baseline" />
-                <label>password</label>
-
-                <input
-                type="password"
-                name="password"
-                // onChange={}
-                placeholder="password"
-                // value={}
-                />
-                <div className="baseline" />
-                
+                            
                 <button className="md-button form-button">Update</button>
 
             </from>
