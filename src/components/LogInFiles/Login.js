@@ -34,7 +34,7 @@ export default function Login() {
                 localStorage.setItem('id', res.data.data.id)
                 localStorage.setItem('username',res.data.data.username)
                 // setUserData(res.data.data)
-                push(`/protected`)
+                push(`/protected/dashboard`)
                 // console.log("login -> userData", userData)
       })
       .catch((err) => {

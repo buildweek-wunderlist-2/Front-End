@@ -41,6 +41,7 @@ const UpdateUser = props => {
             .put(`/api/users/${props.user.id}`, user)
             .then(res => {
                 console.log(res)
+                localStorage.setItem('username',user.username)
                 push(`/protected/dashboard`)
                 window.location.reload()
                 
