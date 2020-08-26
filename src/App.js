@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import {Route, Link} from 'react-router-dom'
+import {Route} from 'react-router-dom'
 import SignUp from './components/SignUpFiles/Signup'
 import NavBar from './components/NavBar'
 

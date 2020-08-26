@@ -1,8 +1,33 @@
 import React, { useState, useEffect } from "react"
 import * as yup from 'yup'
 import signupFormSchema from "./signupFormSchema"
+import styled from 'styled-components'
 
 
+const StyledDiv = styled.div`
+
+display:flex;
+flex-direction: column;
+align-items: center;
+
+button{
+    width: 15%;
+    padding: 1%;
+    margin: 1%;
+}
+
+label{
+    padding: 2%;
+    display: flex;
+    justify-content: space-between;
+    width: 27.5%;
+}
+
+input{
+    margin: 1%;
+}
+
+`
 
 
 export default function SignUp(props){
@@ -91,7 +116,7 @@ export default function SignUp(props){
         </div>
 
         <form onSubmit = {submit}>
-            <div>
+            <StyledDiv>
                 <h2>Information Here</h2>
 
                 <label>Name: 
@@ -125,7 +150,7 @@ export default function SignUp(props){
                 </label>
 
                 <button disabled = {disabled}>Join Us!</button>
-            </div>
+            </StyledDiv>
         </form>
         </>
     )

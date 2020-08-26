@@ -40,7 +40,7 @@ a {
   outline: none;
   color:black;
   background-color: #fffafa;
-  padding: 14px 16px;
+  padding: 10px 10px;
   font-size: 1.6rem;
 
 }
@@ -80,8 +80,8 @@ export default function NavBar(){
         <StyledDiv className = 'navbar'>
                 <h3>Wunderlist</h3>
                 <div className = 'nav'>
-                    <Link to = '/'>Home</Link>
-                    <Link to = '/about'>About</Link>
+                    <a href = 'https://wunderlist-app.netlify.app/'>Home</a>
+                    <a href = 'https://wunderlist-app.netlify.app/about.html'>About</a>
                     <div className = 'dropdown'>
                             <button className = 'dropbtn'>Profile</button>
                         <div className="dropdown-content">
