@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 import { useParams } from 'react-router-dom';
+import { useHistory, Route } from 'react-router-dom';
+import UpdateUser from './UpdateUser';
+
 
 const UserProfile = () => {
     const [user, setUser] = useState(null);
     const params = useParams();
     const id = localStorage.getItem('id')
+    const { push } = useHistory()
+
 
     const fetchUser = () => {
         console.log('id -->', id)
@@ -21,7 +26,7 @@ const UserProfile = () => {
             })
     };
 
-    const deleteUser = user => {
+    const deleteUser = () => {
         axiosWithAuth()
             .delete(`/api/users/${id}`)
             .then(res => {
@@ -32,6 +37,10 @@ const UserProfile = () => {
             .catch(err => {
                 console.log(err)
             })
+    }
+
+    const editUser = () =>{
+        push('protected/edit')
     }
 
     useEffect(() => {
@@ -48,6 +57,10 @@ const UserProfile = () => {
             <h2>Username: {user.username}</h2>
             <h3>Email: {user.email}</h3>
             <button onClick={deleteUser}>Delete User</button>
+            <button onClick={editUser}>Edit User</button>
+            <UpdateUser />
+
+
         </div>
     );
 
