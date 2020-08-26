@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react"
 import * as yup from 'yup'
 import signupFormSchema from "./signupFormSchema"
+import axios from 'axios'
 import styled from 'styled-components'
 
 
@@ -54,10 +55,10 @@ export default function SignUp(props){
 
  const postNewUser = newUser => {
 
-    setUsers([...users, newUser])
-    setValues(initialValues)
-    console.log(newUser)
-
+            setUsers([...users, newUser])
+            setValues(initialValues)
+            console.log(newUser)
+            
  }
 
  const inputChange = evt => {
@@ -111,10 +112,7 @@ export default function SignUp(props){
 
     return (
         <>
-        <div>
-            {/* Header */}
-        </div>
-
+        
         <form onSubmit = {submit}>
             <StyledDiv>
                 <h2>Information Here</h2>
