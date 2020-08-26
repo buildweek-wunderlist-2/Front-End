@@ -10,15 +10,15 @@ import PrivateRoute from './PrivateRoute';
 
 
 const Dashboard = () => {
-
-    return (
+    const username = localStorage.getItem('username')
+    return ( 
         <>
             <h1>Dashboard</h1>
-
-            <UserProfile />
-
+                <h2>Welcome {username}</h2>
+                <UserProfile />
             <AddList />
             <AddToDo />
+            {/* <TodoList /> */}
 
         </>
     );

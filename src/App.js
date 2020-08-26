@@ -15,6 +15,7 @@ function App() {
       <>
         <h1>Oi</h1>
 
+
         <h3> <Link to='/signup'> Register/Signup </Link>  </h3>
         <h3> <Link to='/login'> Login </Link>  </h3>
         <h3> <Link to='/protected'> Protected </Link>  </h3>
@@ -27,7 +28,7 @@ function App() {
           <Route path='/login'>
             <Login />
           </Route>
-          <PrivateRoute exact path='/protected' component={Dashboard} />
+          <PrivateRoute exact path='/protected/dashboard' component={Dashboard} />
         </Switch>
       </>
     </div>
