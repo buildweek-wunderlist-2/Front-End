@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react"
 import * as yup from 'yup'
 import signupFormSchema from "./signupFormSchema"
+import axios from 'axios'
 
 
 
@@ -29,10 +30,10 @@ export default function SignUp(props){
 
  const postNewUser = newUser => {
 
-    setUsers([...users, newUser])
-    setValues(initialValues)
-    console.log(newUser)
-
+            setUsers([...users, newUser])
+            setValues(initialValues)
+            console.log(newUser)
+            
  }
 
  const inputChange = evt => {

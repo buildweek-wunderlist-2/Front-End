@@ -9,7 +9,7 @@ import AddToDo from './components/AddTodo'
 
 axios('https://wunderlist-bw820.herokuapp.com/')
   .then(res => {
-    console.log(res.data)
+    // console.log(res.data)
   })
 
 

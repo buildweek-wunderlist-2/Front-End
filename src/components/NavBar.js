@@ -18,6 +18,7 @@ const StyledDiv = styled.div`
 h3{
     margin: 0;
     font-size: 2.5rem;
+    font-family: 'Architects Daughter', cursive;
 }
 
 .nav{
