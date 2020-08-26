@@ -6,14 +6,14 @@ import UpdateUser from './UpdateUser';
 
 
 const UserProfile = () => {
-    const [user, setUser] = useState(null);
+    const [user, setUser] = useState();
     const params = useParams();
     const id = localStorage.getItem('id')
     const { push } = useHistory()
 
 
     const fetchUser = () => {
-        console.log('id -->', id)
+        console.log('userData -->', user)
 
         axiosWithAuth()
             .get(`/api/users/${id}`)
@@ -58,7 +58,7 @@ const UserProfile = () => {
             <h3>Email: {user.email}</h3>
             <button onClick={deleteUser}>Delete User</button>
             <button onClick={editUser}>Edit User</button>
-            <UpdateUser />
+            <UpdateUser user={user}/>
 
 
         </div>
