@@ -25,7 +25,7 @@ const Todo = props => {
         <div>
             {listItems.map((item) => {
                 return(
-                    <p>{item.name}</p>
+                    <p key={item.id}>{item.name}</p>
                 )
             })}
         </div>

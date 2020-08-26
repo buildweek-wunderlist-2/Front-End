@@ -11,7 +11,7 @@ function AddToDo(props) {
     const initialFormValue = {
         name: '',
         completed: false,
-        list_id: ''
+        list_id: '2'
     }
     const [list, setList] = useState([])
     const [form, setForm] = useState(initialFormValue)
@@ -29,7 +29,7 @@ function AddToDo(props) {
         console.log('LIST', list) 
         axiosWithAuth()
             .post(`/api/lists/${form.list_id}/tasks`, {name: form.name, list_id: form.list_id})
-            .then((res) => console.log(res))
+            .then((res) => console.log('RES',res))
             .catch((err) => console.log(err))
 
         props.createListItem(form)
