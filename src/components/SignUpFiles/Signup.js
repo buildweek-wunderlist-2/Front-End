@@ -86,10 +86,7 @@ export default function SignUp(props){
 
     return (
         <>
-        <div>
-            {/* Header */}
-        </div>
-
+        
         <form onSubmit = {submit}>
             <div>
                 <h2>Information Here</h2>

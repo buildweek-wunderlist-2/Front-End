@@ -40,7 +40,7 @@ a {
   outline: none;
   color:black;
   background-color: #fffafa;
-  padding: 14px 16px;
+  padding: 10px 12px;
   font-size: 1.6rem;
 
 }
