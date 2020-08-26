@@ -31,6 +31,7 @@ export default function SignUp(props){
 
     setUsers([...users, newUser])
     setValues(initialValues)
+    console.log(newUser)
 
  }
 
@@ -72,6 +73,7 @@ export default function SignUp(props){
 
     evt.preventDefault()
     postNewUser(newUser)
+
 
  }
 
