@@ -53,8 +53,8 @@ const UserProfile = () => {
             <h1>User Profile</h1>
             <h2>Username: {user.username}</h2>
             <h3>Email: {user.email}</h3>
-            <button onClick={deleteUser}>Delete User</button>
             <UpdateUser user={user}/>
+            <button onClick={deleteUser}>Delete User</button>
 
 
 
