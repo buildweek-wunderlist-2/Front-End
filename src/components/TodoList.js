@@ -1,21 +1,33 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import Todo from './Todo'
 
-function TodoList() {
+function TodoList(props) {
+    const { list, form } = props
+    console.log('FORM', form)
 
-    return(
+    return (
         <div>
-            <h1>List Name</h1>
-            <h2>Category</h2>
-            {/* filter to show list in correct category */}
-            <p>List Item</p>
-            <p>List Item</p>
-            <p>List Item</p>
-            <p>List Item</p>
-            <div>
-                <button>Edit List</button>
-                <button>Delete List</button>
-            </div>
-        </div> 
+            {list.map((item) => {
+                return (
+                    <>
+                        <h1 key={item.id}>{item.name}</h1>
+                        <h2>{item.type}</h2>
+
+                        <Todo form={form} list_id={item.id} />
+                        <div>
+                            <button>Edit List</button>
+                            <button>Delete List</button>
+                        </div>
+                    </>
+                )
+            })}
+        </div>
     )
 }
-export default TodoList
+// const mapStateToProps = (state)=> {
+//     return({
+//       ...form
+//     })
+// }
+export default connect(null, {})(TodoList)

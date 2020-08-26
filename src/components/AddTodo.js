@@ -1,20 +1,20 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { createListItem } from '../actions/actions'
-import axios from 'axios'
 import { axiosWithAuth } from '../utils/axiosWithAuth'
+import TodoList from './TodoList'
 
 
 
 function AddToDo(props) {
-    const [list, setList] = useState([])
     const initialFormValue = {
         name: '',
         completed: false,
         list_id: ''
     }
-    
+    const [list, setList] = useState([])
     const [form, setForm] = useState(initialFormValue)
+    
 
     const handleChange = (e) => {
         setForm({
@@ -25,7 +25,7 @@ function AddToDo(props) {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log('LIST', list)
+        console.log('LIST', list) 
         axiosWithAuth()
             .post(`/api/lists/${form.list_id}/tasks`, {name: form.name, list_id: form.list_id})
             .then((res) => console.log(res))
@@ -52,7 +52,6 @@ function AddToDo(props) {
                     <label>Select List: </label>
                     <select
                         name='list_id'
-                        // value={form.list_id}
                         onChange={handleChange}
                     >
                         {list.map((item) => {
@@ -73,6 +72,7 @@ function AddToDo(props) {
                     <button>Add</button>
                 </div>
             </form>
+            <TodoList list={list} form={form}/>
         </div>
     )
 }
