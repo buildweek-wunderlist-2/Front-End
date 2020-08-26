@@ -16,7 +16,7 @@ const UpdateUser = () => {
     return (
         <div>
             <h2>Update User</h2>
-            <from>
+            <form>
                 <label>Username</label>
                 <input
                 type="text"
@@ -39,7 +39,7 @@ const UpdateUser = () => {
                             
                 <button className="md-button form-button">Update</button>
 
-            </from>
+            </form>
         </div>
     )
 };
