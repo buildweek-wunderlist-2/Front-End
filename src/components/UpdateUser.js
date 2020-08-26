@@ -9,7 +9,7 @@ const initialUser = {
     id: uuid(),
     username: '',
     email: '',
-    password: '',
+
 };
 
 const UpdateUser = props => {
@@ -51,6 +51,7 @@ const UpdateUser = props => {
     return (
         <div>
             <h2>Update User</h2>
+
             <form onSubmit={handleSubmit}>
                 <label>Username</label>
                 <input
@@ -70,17 +71,7 @@ const UpdateUser = props => {
                 value={user.email}
                 />
                 <div className="baseline" />
-                <label>password</label>
 
-                <input
-                type="password"
-                name="password"
-                onChange={changeHandler}
-                placeholder="password"
-                value={user.password}
-                />
-                <div className="baseline" />
-                
                 <button className="md-button form-button">Update</button>
 
             </form>
