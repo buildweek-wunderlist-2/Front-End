@@ -2,9 +2,35 @@ import React, { useState, useEffect } from "react"
 import * as yup from 'yup'
 import signupFormSchema from "./signupFormSchema"
 import axios from 'axios'
+import styled from 'styled-components'
+import User from './User'
 
 
+const StyledDiv = styled.div`
 
+display:flex;
+flex-direction: column;
+align-items: center;
+
+button{
+    width: 15%;
+    padding: 1%;
+    margin: 1%;
+}
+
+label{
+    padding: 2%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    width: 27.5%;
+}
+
+input{
+    margin: 1%;
+}
+
+`
 
 export default function SignUp(props){
 
@@ -125,6 +151,15 @@ export default function SignUp(props){
                 <button disabled = {disabled}>Join Us!</button>
             </StyledDiv>
         </form>
+        <div>
+            {
+              users.map(newUser => {
+                  return(
+                       <User key = {newUser.id} details = {newUser} />
+                  )
+              })
+            }
+        </div>
         </>
     )
 
