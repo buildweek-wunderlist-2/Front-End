@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react"
 import * as yup from 'yup'
 import signupFormSchema from "./signupFormSchema"
 import { axiosWithAuth } from "../../utils/axiosWithAuth"
+import { Link, useHistory } from 'react-router-dom';
 import uuid from "react-uuid"
 
 
@@ -25,6 +26,7 @@ export default function SignUp(props){
  const initialUsers = []
 
  const [values, setValues] = useState(initialValues)
+ const { push } = useHistory()
 
  const [disabled, setDisabled] = useState(initialDisabled)
  const [users, setUsers] = useState(initialUsers)
@@ -37,10 +39,11 @@ export default function SignUp(props){
     .then(res => {
         console.log("postNewUser -> res.data", res)
         localStorage.setItem('token', res.data.token)
+        push(`/login`)
 
-    setUsers([...users, newUser])
-    setValues(initialValues)
-    console.log(newUser)
+        setUsers([...users, newUser])
+        setValues(initialValues)
+        console.log(newUser)
     })
     .catch(err => console.log(err))
     console.log("postNewUser -> newUser", newUser)
@@ -142,6 +145,9 @@ export default function SignUp(props){
                 </label>
 
                 <button disabled = {disabled}>Join Us!</button>
+                <p>already have an account?</p>
+                <h3> <Link to = '/login'> Login Here</Link>  </h3>
+
             </div>
         </form>
         </>
