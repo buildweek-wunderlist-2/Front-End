@@ -7,10 +7,13 @@ import PrivateRoute from './components/PrivateRoute';
 import './App.css';
 import { Route, Link, Switch } from 'react-router-dom'
 import SignUp from './components/SignUpFiles/Signup'
+import NavBar from './components/NavBar'
 
 function App() {
   return (
+
     <div className="App">
+     <NavBar/>
       <>
       <h1>Oi</h1>
 
