@@ -89,7 +89,7 @@ export default function SignUp(props){
         <>
         
         <form onSubmit = {submit}>
-            <div>
+            <StyledDiv>
                 <h2>Information Here</h2>
 
                 <label>Name: 
@@ -123,7 +123,7 @@ export default function SignUp(props){
                 </label>
 
                 <button disabled = {disabled}>Join Us!</button>
-            </div>
+            </StyledDiv>
         </form>
         </>
     )
