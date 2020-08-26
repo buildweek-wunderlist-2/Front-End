@@ -33,7 +33,7 @@ export default function Login() {
                 localStorage.setItem('token', res.data.token)
                 localStorage.setItem('id', res.data.data.id)
                 // setUserData(res.data.data)
-                push('/protected')
+                push(`/protected`)
                 // console.log("login -> userData", userData)
       })
       .catch((err) => {
