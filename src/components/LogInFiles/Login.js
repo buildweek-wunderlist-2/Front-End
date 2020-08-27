@@ -3,38 +3,92 @@ import axios from "axios";
 import * as yup from "yup";
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
 import loginFormSchema from "./loginFormSchema";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from 'react-router-dom';
 import styled from "styled-components";
 
 const StyledDiv = styled.div`
 font-size: 62.5%;
-font-size: 1.6rem;
+font-size: 1rem;
 font-family: 'Roboto', sans-serif;
-line-height: 1.5;
 background-color: #fffafa;
 color: black;
-text-align: center;
-margin: 5% 0%;
+margin: 5% 0% auto;
+display:flex;
+flex-direction: column;
+align-items: center;
+justify-content: space-between;
+align-content: space-between;
 
-h3 {
-  font-family: 'Architects Daughter', cursive;
-  font-size: 2.5rem;
+h2 {
+    /* font-family: 'Architects Daughter', cursive; */
+    font-size: 2.5rem;
+    color: dodgerblue;
+  }
+
+h4 {
+    text-align: left;
+    margin-bottom: 1rem;
+    color: dodgerblue;
+
 }
 
-button {
-  text-decoration: none;
-  letter-spacing: 1.5px;
-  color: black;
-  padding: 1%;
-  margin: 3% 2%;
-  line-height: 0.8;
+.error {
+    color: red;
+    font-size: 1rem;
+    margin-top: 1rem;
 }
 
+button{
+    text-decoration: none;
+    letter-spacing: 1.5px;
+    padding: 3%;
+    margin: 3% 2%;
+    font-size: 1.1rem;
+    line-height: 0.8;
+    color: dodgerblue;
+    border: 2px solid dodgerblue;
+    border-radius: 10px;
+}
 
 button:hover {
-  color: dodgerblue;
-  border: 2px solid dodgerblue;
-  border-radius: 10px;
+    color: black;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+form {
+    width: 30%;
+    font-size: 1.6rem;
+
+
+
+    
+}
+
+label{
+    padding: 2%;
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    background-color: lightgray;
+    align-content: space-between;
+}
+
+ input{
+    display: flex;
+    justify-content: flex-end;
+    padding: .7rem;
+    font-size: 1.3rem;
+    width: 100%;
+    border-radius: 10px;
+    border: 2px solid dodgerblue;
+
+    
+
+}
+
+p {
+    margin-bottom: -.5rem;
 }
 `;
 
@@ -116,9 +170,9 @@ export default function Login() {
 
   return (
     <StyledDiv className="login">
-      <h3>Login</h3>
+      <h2>Login</h2>
       <form onSubmit={submit}>
-       <p>User Name:</p>
+       <h4>User Name:</h4>
         <input
           value={userInfo.username}
           onChange={inputChange}
@@ -126,7 +180,7 @@ export default function Login() {
           type="text"
         />
         <div>{formErrors.username}</div>
-        <p>Password:</p>
+        <h4>Password:</h4>
         <input
           value={userInfo.password}
           onChange={inputChange}
@@ -137,6 +191,8 @@ export default function Login() {
 
         <button disabled={disabled}>Log In</button>
       </form>
+      <p>Need an account?</p>
+                <h3> <Link to = '/signup'> Sign Up Here</Link>  </h3>
     </StyledDiv>
   );
 }

@@ -3,7 +3,51 @@ import { useLocation } from 'react-router-dom'
 import uuid from 'react-uuid'
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 import { useHistory } from 'react-router-dom';
+import styled from 'styled-components'
 
+
+const StyledDiv = styled.div`
+width: 100%;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: space-between;
+align-content: space-between;
+
+h4 {
+    text-align: left;
+    margin-bottom: 1rem;
+    color: dodgerblue;
+
+}
+
+
+form {
+    width: 30%;
+    font-size: 1.6rem;
+    
+}
+
+input{
+    display: flex;
+    justify-content: flex-end;
+    padding: .7rem;
+    font-size: 1.3rem;
+    width: 100%;
+    border-radius: 10px;
+    border: 2px solid dodgerblue;
+    margin-bottom: .5rem;
+
+    
+
+}
+
+.border {
+        border: 1px solid dodgerblue;
+        margin-top: .5rem;
+    }
+
+`
 
 const initialUser = {
     id: uuid(),
@@ -50,17 +94,17 @@ const UpdateUser = props => {
     }
 
     return (
-        <div>
+        <StyledDiv>
             <form onSubmit={handleSubmit}>
-                <label>Update your username</label>
+                <div className="border" />
+                <h4>Update your username</h4>
                 <input
                 type="text"
                 name="username"
                 onChange={changeHandler}
                 value={user.username}
                 />
-                <div className="baseline" />
-                <label>update your email</label>
+                <h4>update your email</h4>
 
                 <input
                 type="string"
@@ -69,12 +113,12 @@ const UpdateUser = props => {
                 placeholder="email"
                 value={user.email}
                 />
-                <div className="baseline" />
 
                 <button className="md-button form-button">Update</button>
+                <div className="border" />
 
             </form>
-        </div>
+        </StyledDiv>
     )
 };
 export default UpdateUser;

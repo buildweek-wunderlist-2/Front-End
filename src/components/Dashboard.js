@@ -28,6 +28,7 @@ const StyledDiv = styled.div`
     .head h1 {
         display:flex;
         align-self: flex-start;
+        color: dodgerblue;
     }
     
     span {
