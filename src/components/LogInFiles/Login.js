@@ -196,7 +196,7 @@ export default function Login() {
           name="username"
           type="text"
         />
-        <div>{formErrors.username}</div>
+        <div className='error'>{formErrors.username}</div>
         <h4>Password:</h4>
         <input
           value={userInfo.password}
@@ -204,7 +204,7 @@ export default function Login() {
           name="password"
           type="password"
         />
-        <div>{formErrors.password}</div>
+        <div className='error'>{formErrors.password}</div>
 
         <button disabled={disabled}>Log In</button>
       </form>

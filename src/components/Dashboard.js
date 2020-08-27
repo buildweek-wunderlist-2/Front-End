@@ -30,19 +30,42 @@ const StyledDiv = styled.div`
         align-self: flex-start;
         color: dodgerblue;
     }
+
+    h3{ 
+        color: dodgerblue;
+    }
     
-    span {
+    .userheader {
         display:flex;
         flex-direction: column;
-        align-items: flex-start;
+        align-items: flex-end;
         line-height: .5px;
         align-self: flex-start;
+        text-decoration: none;
+
 
     }
 
     .border {
         border: 1px solid dodgerblue;
     }
+
+    .userinfo {
+    letter-spacing: 1.5px;
+    padding: 6%;
+    margin: 3% 2%;
+    line-height: 0.8;
+    color: dodgerblue;
+    border: 2px solid dodgerblue;
+    border-radius: 10px;
+}
+
+    .userinfo:hover {
+        color: black;
+        border: 2px solid black;
+        border-radius: 10px;
+    }
+
 `
 
 
@@ -51,15 +74,17 @@ const Dashboard = () => {
     return ( 
         <StyledDiv className='dashboard'>
             <div className='head'>
-                <span>
+                <div>
 
                 <h1>Dashboard</h1>
                 <h2>Welcome to Wunderlist</h2>
-                </span>
-                <span>
+                </div>
+                <div className='userheader'>
                     <h3>Hello {username}!</h3>
-                    <p>edit your user info <Link to ='/protected/dashboard/profile'>here</Link></p>
-                </span>
+                    <button className='userinfo'>
+                        <Link to ='/protected/dashboard/profile'>User Info</Link>
+                    </button>
+                </div>
             </div>
             <div className='border'></div>
 
