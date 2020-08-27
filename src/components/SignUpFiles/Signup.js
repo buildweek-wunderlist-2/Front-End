@@ -1,13 +1,8 @@
 import React, { useState, useEffect } from "react"
 import * as yup from 'yup'
 import signupFormSchema from "./signupFormSchema"
-<<<<<<< HEAD
-import axios from 'axios'
+import axiosWithAuth from 'axios'
 import styled from 'styled-components'
-=======
-import { axiosWithAuth } from "../../utils/axiosWithAuth"
-import uuid from "react-uuid"
->>>>>>> 58e2a6ce86b3e5f1e7724c2535b21b122750883c
 
 
 const StyledDiv = styled.div`
@@ -67,12 +62,10 @@ export default function SignUp(props){
         console.log("postNewUser -> res.data", res)
         localStorage.setItem('token', res.data.token)
 
-<<<<<<< HEAD
             setUsers([...users, newUser])
             setValues(initialValues)
             console.log(newUser)
             
-=======
     setUsers([...users, newUser])
     setValues(initialValues)
     console.log(newUser)
@@ -84,7 +77,6 @@ export default function SignUp(props){
     // setUsers([...users, newUser])
     // setValues(initialValues)
 
->>>>>>> 58e2a6ce86b3e5f1e7724c2535b21b122750883c
  }
 
  const inputChange = evt => {

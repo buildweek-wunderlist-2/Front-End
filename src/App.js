@@ -5,11 +5,7 @@ import AddList from './components/AddList'
 import Dashboard from './components/Dashboard';
 import PrivateRoute from './components/PrivateRoute';
 import './App.css';
-<<<<<<< HEAD
-import {Route} from 'react-router-dom'
-=======
 import { Route, Link, Switch } from 'react-router-dom'
->>>>>>> 58e2a6ce86b3e5f1e7724c2535b21b122750883c
 import SignUp from './components/SignUpFiles/Signup'
 import NavBar from './components/NavBar'
 
