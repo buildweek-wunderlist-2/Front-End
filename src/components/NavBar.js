@@ -20,6 +20,7 @@ h3{
     font-size: 2.5rem;
     color: #fffafa;
 }
+}
 
 .nav{
     width: 75%;
