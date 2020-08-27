@@ -22,10 +22,10 @@ function AddList(props) {
         e.preventDefault()
         axiosWithAuth()
             .post('/api/lists', {name: form.name, type_id: form.type})
-            .then((res) => console.log('POST', res))
+            .then((res) =>props.createList(res.data.data) )
             .catch((err) => console.log(err))
 
-        props.createList(form)
+        
     }
 
     return (

@@ -8,9 +8,9 @@ function TodoList(props) {
     const { list, form } = props
     console.log('LIST', list)
 
-    const deleteList = () => {
+    const deleteList = (id) => {
         axiosWithAuth()
-            .delete(`/api/lists/${list.id}`)
+            .delete(`/api/lists/${id}`)
             .then((res) => console.log('DELETE',res))
             .catch((err) => console.log(err))
     }
@@ -20,16 +20,16 @@ function TodoList(props) {
         <div>
             {list.map((item) => {
                 return (
-                    <>
-                        <h1 key={item.id}>{item.name}</h1>
-                        <h2 key={item.id +1}>{item.type}</h2>
+                    <div key={item.id}>
+                        <h1 >{item.name}</h1>
+                        <h2 >{item.type}</h2>
 
                         <Todo form={form} list_id={item.id} />
                         <div>
                             <button>Edit List</button>
-                            <button onClick={deleteList}>Delete List</button>
+                            <button onClick={() => deleteList(item.id)}>Delete List</button>
                         </div>
-                    </>
+                    </div>
                 )
             })}
         </div>
