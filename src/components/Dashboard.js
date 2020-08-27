@@ -23,6 +23,7 @@ const StyledDiv = styled.div`
         padding: 1rem 2rem 1rem 2rem;
         /* background-color: lightgray; */
         align-items: flex-start;
+        margin-top: 2rem;
 
     }
 
@@ -35,7 +36,14 @@ const StyledDiv = styled.div`
     h3{ 
         color: dodgerblue;
     }
-    
+    .title {
+        display:flex;
+        flex-direction: column;
+        align-items: flex-end;
+        line-height: .5px;
+        align-self: flex-start;
+        text-decoration: none;
+    }
     .userheader {
         display:flex;
         flex-direction: column;
@@ -89,7 +97,7 @@ const Dashboard = () => {
     return ( 
         <StyledDiv className='dashboard' ref={el => {dashboard=el}}>
             <div className='head'>
-                <div>
+                <div className='title'>
 
                 <h1>Dashboard</h1>
                 <h2>Welcome to Wunderlist</h2>
