@@ -11,7 +11,7 @@ function AddToDo(props) {
     const initialFormValue = {
         name: '',
         completed: false,
-        list_id: '2'
+        list_id: ''
     }
     const [list, setList] = useState([])
     const [form, setForm] = useState(initialFormValue)
@@ -41,6 +41,10 @@ function AddToDo(props) {
             .get('/api/lists')
             .then((res) => {
                 setList(res.data.data)
+                setForm({
+                    ...form,
+                    list_id: res.data.data[0].id
+                })
             })
             .catch((err) => console.log(err))
     }, [])
