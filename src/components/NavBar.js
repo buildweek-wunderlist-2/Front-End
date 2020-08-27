@@ -8,38 +8,51 @@ const StyledDiv = styled.div`
 
   overflow: hidden;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
   text-decoration: none;
-  padding-top: 2%;
-  background-color: #fffafa;
+  padding: 2%;
+  background-color: dodgerblue;
 
 
 h3{
     margin: 0;
     font-size: 2.5rem;
+    color: #fffafa;
 }
 
 .nav{
+    width: 75%;
     display: flex;
+    justify-content: flex-end;
+    align-items: center;
 }
 
 a {
-  float: left;
-  font-size: 1.6rem;
-  text-decoration: none;
-  color: black;
-  padding: 2%;
+    text-decoration: none;
+    letter-spacing: 1.5px;
+    color: #fffafa;
+    padding: 1%;
+    margin: 0% 2%;
 }
 
+a:hover {
+    color: #fffafa;
+    border: 2px solid #fffafa;
+    /* padding: 1%; */
+    border-radius: 10px;
+}
 
+a:visited {
+    color: #fffafa;
+}
 
 .dropdown .dropbtn {  
   color: white;
   border: none;
   outline: none;
   color:black;
-  background-color: #fffafa;
+  background-color: dodgerblue;
   padding: 10px 10px;
   font-size: 1.6rem;
 
@@ -48,7 +61,7 @@ a {
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #f9f9f9;
+  background-color: dodgerblue;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
@@ -82,14 +95,9 @@ export default function NavBar(){
                 <div className = 'nav'>
                     <a href = 'https://wunderlist-app.netlify.app/'>Home</a>
                     <a href = 'https://wunderlist-app.netlify.app/about.html'>About</a>
-                    <div className = 'dropdown'>
-                            <button className = 'dropbtn'>Profile</button>
-                        <div className="dropdown-content">
-                            <Link to = '/profile'>Profile</Link>
-                            <Link to = '/signup'>Register</Link>
-                            <Link to = '/login'>Login</Link>
-                        </div>
-                    </div>
+                    <Link to = '/protected/dashboard'>Dashboard</Link>
+                    <Link to = '/signup'>Register</Link>
+                    <Link to = '/login'>Login</Link>
                 </div>
         </StyledDiv>
         </>
