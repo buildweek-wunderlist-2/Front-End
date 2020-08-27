@@ -173,7 +173,6 @@ export default function SignUp(props){
                 <p>already have an account?</p>
                 <h3> <Link to = '/login'> Login Here</Link>  </h3>
 
-            </div>
         </form>
         </>
     )
