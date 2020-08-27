@@ -85,7 +85,7 @@ export default function NavBar(){
                     <div className = 'dropdown'>
                             <button className = 'dropbtn'>Profile</button>
                         <div className="dropdown-content">
-                            <Link to = '/protected'>Profile</Link>
+                            <Link to = '/profile'>Profile</Link>
                             <Link to = '/signup'>Register</Link>
                             <Link to = '/login'>Login</Link>
                         </div>
