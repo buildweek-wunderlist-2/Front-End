@@ -9,47 +9,90 @@ import uuid from "react-uuid"
 
 const StyledDiv = styled.div`
 font-size: 62.5%;
-font-size: 1.6rem;
+font-size: 1rem;
 font-family: 'Roboto', sans-serif;
-line-height: 1.5;
 background-color: #fffafa;
 color: black;
-text-align: center;
-margin: 5% 0%;
+margin: 5% 0% auto;
 display:flex;
 flex-direction: column;
 align-items: center;
+justify-content: space-between;
+align-content: space-between;
+
+
 
 h2 {
-    font-family: 'Architects Daughter', cursive;
+    /* font-family: 'Architects Daughter', cursive; */
     font-size: 2.5rem;
+    color: dodgerblue;
   }
+
+h4 {
+    text-align: left;
+    margin-bottom: 1rem;
+    color: dodgerblue;
+
+}
+
+.error {
+    color: red;
+    font-size: 1rem;
+    margin-top: 1rem;
+}
 
 button{
     text-decoration: none;
-  letter-spacing: 1.5px;
-  color: black;
-  padding: 1%;
-  margin: 3% 2%;
-  line-height: 0.8;
-}
-
-button:hover {
+    letter-spacing: 1.5px;
+    padding: 1%;
+    margin: 3% 2%;
+    line-height: 0.8;
     color: dodgerblue;
     border: 2px solid dodgerblue;
     border-radius: 10px;
-  }
+}
+
+button:hover {
+    color: black;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+form {
+    width: 30%;
+    font-size: 1.6rem;
+
+
+
+    
+}
 
 label{
     padding: 2%;
     display: flex;
     justify-content: space-between;
-    width: 27.5%;
+    align-items: stretch;
+    background-color: lightgray;
+    align-content: space-between;
 }
 
-input{
-    margin: 1%;
+ input{
+    display: flex;
+    justify-content: flex-end;
+    padding: .7rem;
+    font-size: 1.3rem;
+    width: 100%;
+    border-radius: 10px;
+    border: 2px solid dodgerblue;
+
+    
+
 }
+
+p {
+    margin-bottom: -.5rem;
+}
+
 
 `
 
@@ -155,46 +198,48 @@ export default function SignUp(props){
     return (
         <>
         
-        <form onSubmit = {submit}>
             <StyledDiv>
-                <h2>Information Here</h2>
+        <form onSubmit = {submit}>
+                <h2>Register Here</h2>
+                {/* <div className='input'> */}
 
-                <label>Username: 
+                <h4>Username:</h4>
                     <input 
                      value = {values.username}
                      onChange = {inputChange}
                      name = 'username'
                      type = 'text'
-                    />
-                <div>{errors.username}</div>
-                </label>
+                     />
+                <div className='error'>{errors.username}</div>
+                
+                {/* </div> */}
 
-                <label>Email: 
+                <h4>Email:</h4> 
                     <input 
                     value = {values.email}
                     onChange = {inputChange}
                     name = 'email'
                     type = 'email'
                     />
-                <div>{errors.email}</div>
-                </label>
+                <div className='error'>{errors.email}</div>
 
-                <label>Password:
+
+                <h4>Password:</h4>
                     <input
                     value = {values.password}
                     onChange = {inputChange}
                     name = 'password'
                     type = 'password'
                     />
-                  <div>{errors.password}</div>
-                </label>
+                  <div className='error'>{errors.password}</div>
 
-                <button disabled = {disabled}>Join Us!</button>
-            </StyledDiv>
-                <p>already have an account?</p>
-                <h3> <Link to = '/login'> Login Here</Link>  </h3>
+
 
         </form>
+                <button disabled = {disabled}>Join Us!</button>
+                <p>already have an account?</p>
+                <h3> <Link to = '/login'> Login Here</Link>  </h3>
+            </StyledDiv>
         </>
     )
 
