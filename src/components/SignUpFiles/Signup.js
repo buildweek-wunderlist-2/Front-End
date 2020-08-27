@@ -1,11 +1,36 @@
 import React, { useState, useEffect } from "react"
 import * as yup from 'yup'
 import signupFormSchema from "./signupFormSchema"
+import styled from 'styled-components'
 import { axiosWithAuth } from "../../utils/axiosWithAuth"
 import { Link, useHistory } from 'react-router-dom';
 import uuid from "react-uuid"
 
 
+const StyledDiv = styled.div`
+
+display:flex;
+flex-direction: column;
+align-items: center;
+
+button{
+    width: 15%;
+    padding: 1%;
+    margin: 1%;
+}
+
+label{
+    padding: 2%;
+    display: flex;
+    justify-content: space-between;
+    width: 27.5%;
+}
+
+input{
+    margin: 1%;
+}
+
+`
 
 
 export default function SignUp(props){
@@ -41,9 +66,11 @@ export default function SignUp(props){
         localStorage.setItem('token', res.data.token)
         push(`/login`)
 
-        setUsers([...users, newUser])
-        setValues(initialValues)
-        console.log(newUser)
+            setUsers([...users, newUser])
+            setValues(initialValues)
+            console.log(newUser)
+            
+
     })
     .catch(err => console.log(err))
     console.log("postNewUser -> newUser", newUser)
@@ -106,12 +133,9 @@ export default function SignUp(props){
 
     return (
         <>
-        <div>
-            {/* Header */}
-        </div>
-
+        
         <form onSubmit = {submit}>
-            <div>
+            <StyledDiv>
                 <h2>Information Here</h2>
 
                 <label>Username: 
@@ -145,6 +169,7 @@ export default function SignUp(props){
                 </label>
 
                 <button disabled = {disabled}>Join Us!</button>
+            </StyledDiv>
                 <p>already have an account?</p>
                 <h3> <Link to = '/login'> Login Here</Link>  </h3>
 
