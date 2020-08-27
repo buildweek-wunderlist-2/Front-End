@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { createList } from '../actions/actions'
+import { axiosWithAuth } from '../utils/axiosWithAuth'
 
 function AddList(props) {
     const initialData = {
@@ -19,6 +20,10 @@ function AddList(props) {
 
     const handleSubmit = (e) => {
         e.preventDefault()
+        axiosWithAuth()
+            .post('/api/lists', {name: form.name, type_id: form.type})
+            .then((res) => console.log('POST', res))
+            .catch((err) => console.log(err))
 
         props.createList(form)
     }

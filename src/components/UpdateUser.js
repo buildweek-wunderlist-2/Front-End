@@ -1,57 +1,79 @@
 import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom'
 import uuid from 'react-uuid'
+import { axiosWithAuth } from '../utils/axiosWithAuth';
+import { useHistory } from 'react-router-dom';
 
 
 const initialUser = {
     id: uuid(),
     username: '',
     email: '',
-    password: '',
-    time: '',
+
 };
 
-const UpdateUser = () => {
+const UpdateUser = props => {
+    const location = useLocation()
     const [user, setUser] = useState(initialUser)
+    const { push } = useHistory();
 
+    console.log("props", props)
+    useEffect(() => {
+        if (location.state) {
+            setUser(location.state)
+        } else {
+            setUser(props.user)
+        }
+    }, [])
 
+    const changeHandler = evt => {
+        evt.persist();
+        let value = evt.target.value
+        setUser({
+            ...user,
+            [evt.target.name]: value
+        })
+    }
+
+    const handleSubmit = e => {
+        e.preventDefault();
+        axiosWithAuth()
+            .put(`/api/users/${props.user.id}`, user)
+            .then(res => {
+                console.log(res)
+                localStorage.setItem('username',user.username)
+                push(`/protected/dashboard`)
+                window.location.reload()
+                
+            })
+            .catch(err => console.log(err))
+    }
 
     return (
         <div>
-            <h2>Update User</h2>
-            <from>
-                <label>Username</label>
+            <form onSubmit={handleSubmit}>
+                <label>Update your username</label>
                 <input
                 type="text"
                 name="username"
-                // onChange={}
-                placeholder="username"
-                // value={}
+                onChange={changeHandler}
+                value={user.username}
                 />
                 <div className="baseline" />
-                <label>email</label>
+                <label>update your email</label>
 
                 <input
                 type="string"
                 name="email"
-                // onChange={}
+                onChange={changeHandler}
                 placeholder="email"
-                // value={}
+                value={user.email}
                 />
                 <div className="baseline" />
-                <label>password</label>
 
-                <input
-                type="password"
-                name="password"
-                // onChange={}
-                placeholder="password"
-                // value={}
-                />
-                <div className="baseline" />
-                
                 <button className="md-button form-button">Update</button>
 
-            </from>
+            </form>
         </div>
     )
 };
