@@ -1,8 +1,13 @@
 import React, { useState, useEffect } from "react"
 import * as yup from 'yup'
 import signupFormSchema from "./signupFormSchema"
+<<<<<<< HEAD
 import axios from 'axios'
 import styled from 'styled-components'
+=======
+import { axiosWithAuth } from "../../utils/axiosWithAuth"
+import uuid from "react-uuid"
+>>>>>>> 58e2a6ce86b3e5f1e7724c2535b21b122750883c
 
 
 const StyledDiv = styled.div`
@@ -34,13 +39,13 @@ input{
 export default function SignUp(props){
 
  const initialValues = {
-    name: '',
+    username: '',
     email: '',
     password: '',
  }
 
  const initialErrors = {
-     name: '',
+     username: '',
      email: '',
      password: '',
  }
@@ -49,16 +54,37 @@ export default function SignUp(props){
  const initialUsers = []
 
  const [values, setValues] = useState(initialValues)
+
  const [disabled, setDisabled] = useState(initialDisabled)
  const [users, setUsers] = useState(initialUsers)
  const [errors, setErrors] = useState(initialErrors)
 
- const postNewUser = newUser => {
+ const postNewUser = () => {
+    
+    axiosWithAuth()
+    .post(`/api/auth/register`, newUser)
+    .then(res => {
+        console.log("postNewUser -> res.data", res)
+        localStorage.setItem('token', res.data.token)
 
+<<<<<<< HEAD
             setUsers([...users, newUser])
             setValues(initialValues)
             console.log(newUser)
             
+=======
+    setUsers([...users, newUser])
+    setValues(initialValues)
+    console.log(newUser)
+    })
+    .catch(err => console.log(err))
+    console.log("postNewUser -> newUser", newUser)
+    
+    
+    // setUsers([...users, newUser])
+    // setValues(initialValues)
+
+>>>>>>> 58e2a6ce86b3e5f1e7724c2535b21b122750883c
  }
 
  const inputChange = evt => {
@@ -88,14 +114,15 @@ export default function SignUp(props){
 
  }
 
+ const newUser = {
+     username: values.username,
+     email: values.email,
+     password: values.password,
+     id: Date.now()
+ }
 
  const submit = evt => {
 
-    const newUser = {
-        name: values.name.trim(),
-        email: values.email.trim(),
-        password: values.password.trim(),
-    }
 
     evt.preventDefault()
     postNewUser(newUser)
@@ -117,14 +144,14 @@ export default function SignUp(props){
             <StyledDiv>
                 <h2>Information Here</h2>
 
-                <label>Name: 
+                <label>Username: 
                     <input 
-                     value = {values.name}
+                     value = {values.username}
                      onChange = {inputChange}
-                     name = 'name'
+                     name = 'username'
                      type = 'text'
                     />
-                <div>{errors.name}</div>
+                <div>{errors.username}</div>
                 </label>
 
                 <label>Email: 
