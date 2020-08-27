@@ -49,11 +49,11 @@ const StyledDiv = styled.div`
 
 const Dashboard = () => {
     const username = localStorage.getItem('username')
-    let signinForm = useRef(null)
+    let dashboard = useRef(null)
 
     useEffect(()=> {
       TweenMax.to(
-        signinForm, 
+        dashboard, 
         .8,
         {
           opacity: 1,
@@ -64,7 +64,7 @@ const Dashboard = () => {
     })
 
     return ( 
-        <StyledDiv className='dashboard' ref={el => {signinForm=el}}>
+        <StyledDiv className='dashboard' ref={el => {dashboard=el}}>
             <div className='head'>
                 <span>
 
