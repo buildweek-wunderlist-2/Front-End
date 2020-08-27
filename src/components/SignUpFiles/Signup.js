@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useRef } from "react"
 import * as yup from 'yup'
 import signupFormSchema from "./signupFormSchema"
 import styled from 'styled-components'
 import { axiosWithAuth } from "../../utils/axiosWithAuth"
 import { Link, useHistory } from 'react-router-dom';
 import uuid from "react-uuid"
+import {TweenMax,Power3} from 'gsap'
 
 
 const StyledDiv = styled.div`
@@ -91,6 +92,20 @@ p {
 
 
 export default function SignUp(props){
+
+    let signupForm = useRef(null)
+
+    useEffect(()=> {
+      TweenMax.to(
+        signupForm, 
+        .8,
+        {
+          opacity: 1,
+          y: -30,
+          ease: Power3.easeOut
+        }
+      )
+    })
 
  const initialValues = {
     username: '',
@@ -192,7 +207,7 @@ export default function SignUp(props){
         <>
         
             <StyledDiv>
-        <form onSubmit = {submit}>
+        <form onSubmit = {submit} ref={el => {signupForm=el}}>
                 <h2>Register Here</h2>
                 {/* <div className='input'> */}
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState, useRef } from "react";
 import AddToDo from './AddTodo'
 import AddList from './AddList'
 import UserProfile from './UserProfile';
@@ -7,6 +7,7 @@ import { Route, Link, Switch } from "react-router-dom";
 import UpdateUser from './UpdateUser';
 import PrivateRoute from './PrivateRoute';
 import styled from 'styled-components'
+import {TweenMax,Power3} from 'gsap'
 
 const StyledDiv = styled.div`
     border: 2px solid dodgerblue;
@@ -71,8 +72,22 @@ const StyledDiv = styled.div`
 
 const Dashboard = () => {
     const username = localStorage.getItem('username')
+    let dashboard = useRef(null)
+
+    useEffect(()=> {
+      TweenMax.to(
+        dashboard, 
+        .8,
+        {
+          opacity: 1,
+          y: -30,
+          ease: Power3.easeOut
+        }
+      )
+    })
+
     return ( 
-        <StyledDiv className='dashboard'>
+        <StyledDiv className='dashboard' ref={el => {dashboard=el}}>
             <div className='head'>
                 <div>
 
