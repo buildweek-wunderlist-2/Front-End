@@ -13,14 +13,6 @@ function App() {
     <div className="App">
       <NavBar />
       <>
-        <h1>Oi</h1>
-
-
-        <h3> <Link to='/signup'> Register/Signup </Link>  </h3>
-        <h3> <Link to='/login'> Login </Link>  </h3>
-        <h3> <Link to='/protected/dashboard'> Protected </Link>  </h3>
-
-
         <Switch>
           <Route path='/signup' >
             <SignUp />

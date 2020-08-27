@@ -27,6 +27,7 @@ h3{
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    height: 5vh;
 }
 
 a {
@@ -35,6 +36,8 @@ a {
     color: #fffafa;
     padding: 1%;
     margin: 0% 2%;
+    font-size: 1.1rem;
+
 }
 
 a:hover {
@@ -85,7 +88,11 @@ a:visited {
 .dropdown:hover .dropdown-content {
   display: block;
 }
+
+
 `
+
+
 
 export default function NavBar(){
 
