@@ -44,7 +44,7 @@ h4 {
 button{
     text-decoration: none;
     letter-spacing: 1.5px;
-    padding: 1%;
+    padding: 3%;
     margin: 3% 2%;
     line-height: 0.8;
     color: dodgerblue;
@@ -67,16 +67,9 @@ form {
     
 }
 
-label{
-    padding: 2%;
-    display: flex;
-    justify-content: space-between;
-    align-items: stretch;
-    background-color: lightgray;
-    align-content: space-between;
-}
 
- input{
+
+input{
     display: flex;
     justify-content: flex-end;
     padding: .7rem;
@@ -235,8 +228,8 @@ export default function SignUp(props){
 
 
 
-        </form>
                 <button disabled = {disabled}>Join Us!</button>
+        </form>
                 <p>already have an account?</p>
                 <h3> <Link to = '/login'> Login Here</Link>  </h3>
             </StyledDiv>
