@@ -9,13 +9,39 @@ import PrivateRoute from './PrivateRoute';
 import styled from 'styled-components'
 
 const StyledDiv = styled.div`
-    background-color: grey;
     border: 2px solid dodgerblue;
-    border-radius: 8px;
-    width: 70%;
-    margin: 0 auto;
-    padding: 2rem;
+    /* width: 70%; */
+    height: 80vh;
+    padding: 0 2rem 2rem 2rem;
+    margin: 0 5%;
+    
+    .head {
+        display: flex;
+        justify-content: space-between;
+        /* width: 70%; */
+        padding: 1rem 2rem 1rem 2rem;
+        /* background-color: lightgray; */
+        align-items: flex-start;
 
+    }
+
+    .head h1 {
+        display:flex;
+        align-self: flex-start;
+    }
+    
+    span {
+        display:flex;
+        flex-direction: column;
+        align-items: flex-start;
+        line-height: .5px;
+        align-self: flex-start;
+
+    }
+
+    .border {
+        border: 1px solid dodgerblue;
+    }
 `
 
 
@@ -23,20 +49,28 @@ const Dashboard = () => {
     const username = localStorage.getItem('username')
     return ( 
         <StyledDiv className='dashboard'>
-            <h1>Dashboard</h1>
-                <h3>Hello {username}!</h3>
-                <h2>Welcome to Wunderlist</h2>
+            <div className='head'>
+                <span>
 
-                <p>edit your user info <Link to ='/protected/dashboard/profile'>here</Link></p>
-                    <Switch>
-                        <Route exact path='/protected/dashboard'>
-                            <AddList />
-                            <AddToDo />
-                        </Route>
-                        <Route path='/protected/dashboard/profile'>
-                            <UserProfile />
-                        </Route>
-                    </Switch>
+                <h1>Dashboard</h1>
+                <h2>Welcome to Wunderlist</h2>
+                </span>
+                <span>
+                    <h3>Hello {username}!</h3>
+                    <p>edit your user info <Link to ='/protected/dashboard/profile'>here</Link></p>
+                </span>
+            </div>
+            <div className='border'></div>
+
+                <Switch>
+                    <Route exact path='/protected/dashboard'>
+                        <AddList />
+                        <AddToDo />
+                    </Route>
+                    <Route path='/protected/dashboard/profile'>
+                        <UserProfile />
+                    </Route>
+                </Switch>
             {/* <TodoList /> */}
         </StyledDiv>
     );
