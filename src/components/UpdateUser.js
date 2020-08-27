@@ -41,7 +41,8 @@ const UpdateUser = props => {
             .put(`/api/users/${props.user.id}`, user)
             .then(res => {
                 console.log(res)
-                push(`/protected`)
+                localStorage.setItem('username',user.username)
+                push(`/protected/dashboard`)
                 window.location.reload()
                 
             })
@@ -50,25 +51,23 @@ const UpdateUser = props => {
 
     return (
         <div>
-            <h2>Update User</h2>
-
             <form onSubmit={handleSubmit}>
-                <label>Username</label>
+                <label>Update your username</label>
                 <input
                 type="text"
                 name="username"
                 onChange={changeHandler}
-                // value={user.username}
+                value={user.username}
                 />
                 <div className="baseline" />
-                <label>email</label>
+                <label>update your email</label>
 
                 <input
                 type="string"
                 name="email"
                 onChange={changeHandler}
                 placeholder="email"
-                // value={user.email}
+                value={user.email}
                 />
                 <div className="baseline" />
 

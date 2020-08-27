@@ -1,11 +1,57 @@
 import React, { useState, useEffect } from "react"
 import * as yup from 'yup'
 import signupFormSchema from "./signupFormSchema"
+import styled from 'styled-components'
 import { axiosWithAuth } from "../../utils/axiosWithAuth"
 import { Link, useHistory } from 'react-router-dom';
 import uuid from "react-uuid"
 
 
+const StyledDiv = styled.div`
+font-size: 62.5%;
+font-size: 1.6rem;
+font-family: 'Roboto', sans-serif;
+line-height: 1.5;
+background-color: #fffafa;
+color: black;
+text-align: center;
+margin: 5% 0%;
+display:flex;
+flex-direction: column;
+align-items: center;
+
+h2 {
+    font-family: 'Architects Daughter', cursive;
+    font-size: 2.5rem;
+  }
+
+button{
+    text-decoration: none;
+  letter-spacing: 1.5px;
+  color: black;
+  padding: 1%;
+  margin: 3% 2%;
+  line-height: 0.8;
+}
+
+button:hover {
+    color: dodgerblue;
+    border: 2px solid dodgerblue;
+    border-radius: 10px;
+  }
+
+label{
+    padding: 2%;
+    display: flex;
+    justify-content: space-between;
+    width: 27.5%;
+}
+
+input{
+    margin: 1%;
+}
+
+`
 
 
 export default function SignUp(props){
@@ -41,9 +87,11 @@ export default function SignUp(props){
         localStorage.setItem('token', res.data.token)
         push(`/login`)
 
-        setUsers([...users, newUser])
-        setValues(initialValues)
-        console.log(newUser)
+            setUsers([...users, newUser])
+            setValues(initialValues)
+            console.log(newUser)
+            
+
     })
     .catch(err => console.log(err))
     console.log("postNewUser -> newUser", newUser)
@@ -106,12 +154,9 @@ export default function SignUp(props){
 
     return (
         <>
-        <div>
-            {/* Header */}
-        </div>
-
+        
         <form onSubmit = {submit}>
-            <div>
+            <StyledDiv>
                 <h2>Information Here</h2>
 
                 <label>Username: 
@@ -145,10 +190,10 @@ export default function SignUp(props){
                 </label>
 
                 <button disabled = {disabled}>Join Us!</button>
+            </StyledDiv>
                 <p>already have an account?</p>
                 <h3> <Link to = '/login'> Login Here</Link>  </h3>
 
-            </div>
         </form>
         </>
     )
