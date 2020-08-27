@@ -15,7 +15,6 @@ function TodoList(props) {
             .catch((err) => console.log(err))
     }
 
-
     return (
         <div>
             {list.map((item) => {
