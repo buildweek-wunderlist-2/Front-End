@@ -41,8 +41,8 @@ a {
   outline: none;
   color:black;
   background-color: #fffafa;
-  padding: 10px 12px;
-  font-size: 1.6rem;
+  padding: 10.5px 8px;
+  font-size: 1.5rem;
 
 }
 
