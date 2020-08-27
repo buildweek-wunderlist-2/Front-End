@@ -6,13 +6,13 @@ import './App.css';
 import { Route, Link, Switch } from 'react-router-dom'
 import SignUp from './components/SignUpFiles/Signup'
 import NavBar from './components/NavBar'
+import Footer from './components/Footer'
 
 function App() {
   return (
 
     <div className="App">
       <NavBar />
-      <>
         <Switch>
           <Route path='/signup' >
             <SignUp />
@@ -22,7 +22,7 @@ function App() {
           </Route>
           <PrivateRoute path='/protected/dashboard' component={Dashboard} />
         </Switch>
-      </>
+      <Footer/>
     </div>
   );
 }

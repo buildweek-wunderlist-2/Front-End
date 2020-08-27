@@ -8,16 +8,37 @@ import uuid from "react-uuid"
 
 
 const StyledDiv = styled.div`
-
+font-size: 62.5%;
+font-size: 1.6rem;
+font-family: 'Roboto', sans-serif;
+line-height: 1.5;
+background-color: #fffafa;
+color: black;
+text-align: center;
+margin: 5% 0%;
 display:flex;
 flex-direction: column;
 align-items: center;
 
+h2 {
+    font-family: 'Architects Daughter', cursive;
+    font-size: 2.5rem;
+  }
+
 button{
-    width: 15%;
-    padding: 1%;
-    margin: 1%;
+    text-decoration: none;
+  letter-spacing: 1.5px;
+  color: black;
+  padding: 1%;
+  margin: 3% 2%;
+  line-height: 0.8;
 }
+
+button:hover {
+    color: dodgerblue;
+    border: 2px solid dodgerblue;
+    border-radius: 10px;
+  }
 
 label{
     padding: 2%;
