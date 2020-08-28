@@ -3,10 +3,11 @@ import React from 'react'
 import { connect } from 'react-redux'
 import Todo from './Todo'
 import { axiosWithAuth } from '../utils/axiosWithAuth'
+import { useHistory } from 'react-router-dom'
 
 function TodoList(props) {
     const { list, form } = props
-    console.log('LIST', list)
+    const history = useHistory()
 
     const deleteList = (id) => {
         axiosWithAuth()
@@ -24,8 +25,9 @@ function TodoList(props) {
                         <h2 >{item.type}</h2>
 
                         <Todo form={form} list_id={item.id} />
+                        
                         <div>
-                            <button>Edit List</button>
+                            
                             <button onClick={() => deleteList(item.id)}>Delete List</button>
                         </div>
                     </div>
@@ -34,9 +36,5 @@ function TodoList(props) {
         </div>
     )
 }
-// const mapStateToProps = (state)=> {
-//     return({
-//       ...form
-//     })
-// }
+
 export default connect(null, {})(TodoList)

@@ -4,9 +4,6 @@ import { createListItem } from '../actions/actions'
 import { axiosWithAuth } from '../utils/axiosWithAuth'
 import TodoList from './TodoList'
 
-
-
-
 function AddToDo(props) {
     const initialFormValue = {
         name: '',
@@ -31,11 +28,10 @@ function AddToDo(props) {
             .post(`/api/lists/${form.list_id}/tasks`, {name: form.name, list_id: form.list_id})
             .then((res) => console.log('RES',res))
             .catch((err) => console.log(err))
-
+        setForm(initialFormValue)
         props.createListItem(form)
     }
 
-    
     useEffect(() => {
         axiosWithAuth()
             .get('/api/lists')

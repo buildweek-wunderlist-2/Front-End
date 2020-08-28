@@ -1,11 +1,13 @@
-import React, { useState, useEffect, useReducer } from 'react';
+import React, { useState, useEffect } from 'react';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 import { connect } from 'react-redux';
+import { useHistory } from 'react-router-dom'
 
 
 
 const Todo = props => {
     const [listItems, setListItems] = useState([])
+    const history = useHistory()
 
 
     useEffect(() => {
@@ -13,7 +15,6 @@ const Todo = props => {
             .get(`/api/lists/${props.list_id}/tasks`)
             .then((res) => {
                 setListItems(res.data.data)
-                console.log('listItems', listItems)
             })
             .catch((err) => console.log(err))
     }, [])
@@ -51,15 +52,24 @@ const Todo = props => {
 
         })
     }
-
+console.log(listItems)
     return (
         <div >
             {listItems.map((item) => {
                 return (
-                    <p onClick={() => toggleItem(item.id)} className={`item${item.completed ? " completed" : ""}`} key={item.id}>{item.name}</p>
+                    <>
+                        <p onClick={() => toggleItem(item.id)} className={`item${item.completed ? " completed" : ""}`} key={item.id}>{item.name}</p>
+                        <button onClick={
+                            (e) => {
+                                e.preventDefault()
+                                history.push(`/protected/dashboard/edit-list/${item.list_id}/${item.id}`)
+                            }}
+                        >Edit Item</button>
+                    </>
                 )
             })}
             <button onClick={deleteItem}>Clear Completed</button>
+
         </div>
     );
 };
