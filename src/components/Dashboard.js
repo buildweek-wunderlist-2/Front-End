@@ -7,6 +7,7 @@ import { Route, Link, Switch, useHistory} from "react-router-dom";
 import UpdateUser from './UpdateUser';
 import PrivateRoute from './PrivateRoute';
 import styled from 'styled-components'
+import EditList from "./EditList"
 import {TweenMax,Power3} from 'gsap'
 
 const StyledDiv = styled.div`
@@ -141,6 +142,9 @@ const Dashboard = () => {
                     </Route>
                     <Route path='/protected/dashboard/profile'>
                         <UserProfile />
+                    </Route>
+                    <Route path='/protected/dashboard/edit-list/:listid/:id'>
+                        <EditList />
                     </Route>
                 </Switch>
             {/* <TodoList /> */}
