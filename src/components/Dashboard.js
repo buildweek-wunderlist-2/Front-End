@@ -61,7 +61,7 @@ const StyledDiv = styled.div`
 
     .headerbtn {
     letter-spacing: 1.5px;
-    padding: 6%;
+    padding: 7%;
     margin: 3% 2%;
     line-height: 0.8;
     color: dodgerblue;
@@ -77,7 +77,7 @@ const StyledDiv = styled.div`
 
     .logout {
         letter-spacing: 1.5px;
-        padding: 6%;
+        padding: 7%;
         margin: 3% 2%;
         line-height: 0.8;
         color: red;
