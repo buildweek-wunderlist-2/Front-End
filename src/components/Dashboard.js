@@ -7,6 +7,7 @@ import { Route, Link, Switch } from "react-router-dom";
 import UpdateUser from './UpdateUser';
 import PrivateRoute from './PrivateRoute';
 import styled from 'styled-components'
+import EditList from "./EditList"
 
 const StyledDiv = styled.div`
     border: 2px solid dodgerblue;
@@ -70,6 +71,9 @@ const Dashboard = () => {
                     </Route>
                     <Route path='/protected/dashboard/profile'>
                         <UserProfile />
+                    </Route>
+                    <Route path='/protected/dashboard/edit-list/:id'>
+                        <EditList />
                     </Route>
                 </Switch>
             {/* <TodoList /> */}

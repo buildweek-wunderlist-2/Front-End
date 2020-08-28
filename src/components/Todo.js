@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useReducer } from 'react';
+import React, { useState, useEffect } from 'react';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 import { connect } from 'react-redux';
 
@@ -13,7 +13,6 @@ const Todo = props => {
             .get(`/api/lists/${props.list_id}/tasks`)
             .then((res) => {
                 setListItems(res.data.data)
-                console.log('listItems', listItems)
             })
             .catch((err) => console.log(err))
     }, [])

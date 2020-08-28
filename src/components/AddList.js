@@ -24,7 +24,7 @@ function AddList(props) {
             .post('/api/lists', {name: form.name, type_id: form.type})
             .then((res) =>props.createList(res.data.data) )
             .catch((err) => console.log(err))
-
+        setForm(initialData)
         
     }
 
@@ -36,6 +36,7 @@ function AddList(props) {
                     <input
                         type='text'
                         name='name'
+                        placeholder='List Name'
                         value={form.name}
                         onChange={handleChange}
                     />
