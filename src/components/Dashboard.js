@@ -7,11 +7,8 @@ import { Route, Link, Switch, useHistory} from "react-router-dom";
 import UpdateUser from './UpdateUser';
 import PrivateRoute from './PrivateRoute';
 import styled from 'styled-components'
-<<<<<<< HEAD
 import EditList from "./EditList"
-=======
 import {TweenMax,Power3} from 'gsap'
->>>>>>> ff92c345b6a41f4f356bf5d9c163854590a07150
 
 const StyledDiv = styled.div`
     border: 2px solid dodgerblue;
@@ -146,7 +143,7 @@ const Dashboard = () => {
                     <Route path='/protected/dashboard/profile'>
                         <UserProfile />
                     </Route>
-                    <Route path='/protected/dashboard/edit-list/:id'>
+                    <Route path='/protected/dashboard/edit-list/:listid/:id'>
                         <EditList />
                     </Route>
                 </Switch>

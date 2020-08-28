@@ -25,13 +25,9 @@ function TodoList(props) {
                         <h2 >{item.type}</h2>
 
                         <Todo form={form} list_id={item.id} />
+                        
                         <div>
-                            <button onClick={
-                                (e) => {
-                                    e.preventDefault()
-                                    history.push(`/protected/dashboard/edit-list/${item.id}`)
-                                }}
-                                >Edit List</button>
+                            
                             <button onClick={() => deleteList(item.id)}>Delete List</button>
                         </div>
                     </div>

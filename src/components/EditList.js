@@ -8,25 +8,25 @@ function EditList(props) {
     const [form, setForm] = useState([])
     const [listName, setListName] = useState([])
     const history = useHistory()
-    const { id } = useParams()
+    const { id, listid } = useParams()
 
     useEffect(() => {
         axiosWithAuth()
-            .get(`/api/lists/${id}/tasks`)
+            .get(`/api/lists/${listid}/tasks/${id}`)
             .then((res) => {
                 setForm(res.data.data)
-                console.log(res.data.data)
+                console.log(res)
             })
             .catch((err) => console.log(err))
-            
-            axiosWithAuth()
-            .get(`/api/lists/${id}`)
+
+        axiosWithAuth()
+            .get(`/api/lists/${listid}`)
             .then((res) => {
                 setListName(res.data.data)
             })
-        }, [])
-        
-        console.log('FORM', form)
+    }, [])
+
+    console.log('FORM', form)
 
     const handleChange = (e) => {
         setForm({
@@ -37,8 +37,9 @@ function EditList(props) {
 
     const handleUpdate = (e) => {
         e.preventDefault()
+        const updatedTodo = {name: form.name, list_id: form.list_id}
         axiosWithAuth()
-            .put(`/api/lists/${id}/tasks`, form)
+            .put(`/api/lists/${listid}/tasks/${id}`, updatedTodo)
             .then((res) => {
                 console.log(res)
             })
@@ -48,21 +49,14 @@ function EditList(props) {
         <div>
             <h1>Edit Items</h1>
             <form onSubmit={handleUpdate}>
-                <h2>{listName.name}</h2>
-                {form.map((item) => {
-                    return (
-                        <div key={item.id}>
-                            <input
-                                type='text'
-                                name={`name${item.id}`}
-                                placeholder={item.name}
-                                value={form.name}
-                                onChange={handleChange}
-                            />
-                        </div>
-                    )
-                })}
 
+                <input
+                    type='text'
+                    name='name'
+                    // placeholder={item.name}
+                    value={form.name}
+                    onChange={handleChange}
+                />
 
                 <button>Update</button>
             </form>
