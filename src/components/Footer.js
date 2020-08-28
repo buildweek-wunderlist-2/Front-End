@@ -64,8 +64,8 @@ export default function Footer() {
     <StyledDiv>
         <footer>
       <nav>
-        <a href="/index.html">Home</a>
-        <a href="/about.html">About</a>
+        <a href="https://wunderlist-app.netlify.app/index.html">Home</a>
+        <a href="https://wunderlist-app.netlify.app/about.html">About</a>
         <a href="https://front-end-drab-psi.vercel.app/login">Login</a>
         <a href="https://front-end-drab-psi.vercel.app/signup">Sign Up</a>
       </nav>
