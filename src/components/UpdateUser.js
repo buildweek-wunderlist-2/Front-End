@@ -104,7 +104,7 @@ const UpdateUser = props => {
                 onChange={changeHandler}
                 value={user.username}
                 />
-                <h4>update your email</h4>
+                <h4>Update your email</h4>
 
                 <input
                 type="string"

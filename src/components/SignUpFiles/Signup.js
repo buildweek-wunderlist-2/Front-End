@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useRef } from "react"
 import * as yup from 'yup'
 import signupFormSchema from "./signupFormSchema"
 import styled from 'styled-components'
 import { axiosWithAuth } from "../../utils/axiosWithAuth"
 import { Link, useHistory } from 'react-router-dom';
 import uuid from "react-uuid"
+import {TweenMax,Power3} from 'gsap'
 
 
 const StyledDiv = styled.div`
@@ -44,7 +45,7 @@ h4 {
 button{
     text-decoration: none;
     letter-spacing: 1.5px;
-    padding: 1%;
+    padding: 3%;
     margin: 3% 2%;
     line-height: 0.8;
     color: dodgerblue;
@@ -67,16 +68,9 @@ form {
     
 }
 
-label{
-    padding: 2%;
-    display: flex;
-    justify-content: space-between;
-    align-items: stretch;
-    background-color: lightgray;
-    align-content: space-between;
-}
 
- input{
+
+input{
     display: flex;
     justify-content: flex-end;
     padding: .7rem;
@@ -98,6 +92,20 @@ p {
 
 
 export default function SignUp(props){
+
+    let signupForm = useRef(null)
+
+    useEffect(()=> {
+      TweenMax.to(
+        signupForm, 
+        .8,
+        {
+          opacity: 1,
+          y: -30,
+          ease: Power3.easeOut
+        }
+      )
+    })
 
  const initialValues = {
     username: '',
@@ -199,7 +207,7 @@ export default function SignUp(props){
         <>
         
             <StyledDiv>
-        <form onSubmit = {submit}>
+        <form onSubmit = {submit} ref={el => {signupForm=el}}>
                 <h2>Register Here</h2>
                 {/* <div className='input'> */}
 
@@ -235,8 +243,8 @@ export default function SignUp(props){
 
 
 
-        </form>
                 <button disabled = {disabled}>Join Us!</button>
+        </form>
                 <p>already have an account?</p>
                 <h3> <Link to = '/login'> Login Here</Link>  </h3>
             </StyledDiv>

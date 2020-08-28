@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import * as yup from "yup";
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
 import loginFormSchema from "./loginFormSchema";
 import { Link, useHistory } from 'react-router-dom';
 import styled from "styled-components";
+import {TweenMax,Power3} from 'gsap'
 
 const StyledDiv = styled.div`
 font-size: 62.5%;
@@ -105,6 +106,22 @@ const initialUsers = [];
 const initialDisabled = true;
 
 export default function Login() {
+
+
+  let signinForm = useRef(null)
+
+  useEffect(()=> {
+    TweenMax.to(
+      signinForm, 
+      .8,
+      {
+        opacity: 1,
+        y: -30,
+        ease: Power3.easeOut
+      }
+    )
+  })
+
   const [userInfo, setUserInfo] = useState(initialFormValues);
   const [formErrors, setFormErrors] = useState(initialFormErrors);
   const { push } = useHistory();
@@ -169,7 +186,7 @@ export default function Login() {
   }, [userInfo]);
 
   return (
-    <StyledDiv className="login">
+    <StyledDiv className="login" ref={el => {signinForm=el}}>
       <h2>Login</h2>
       <form onSubmit={submit}>
        <h4>User Name:</h4>
@@ -179,7 +196,7 @@ export default function Login() {
           name="username"
           type="text"
         />
-        <div>{formErrors.username}</div>
+        <div className='error'>{formErrors.username}</div>
         <h4>Password:</h4>
         <input
           value={userInfo.password}
@@ -187,7 +204,7 @@ export default function Login() {
           name="password"
           type="password"
         />
-        <div>{formErrors.password}</div>
+        <div className='error'>{formErrors.password}</div>
 
         <button disabled={disabled}>Log In</button>
       </form>

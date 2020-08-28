@@ -16,17 +16,17 @@ function EditList(props) {
             .then((res) => {
                 setForm(res.data.data)
                 console.log(res.data.data)
-                console.log('FORM', form)
             })
             .catch((err) => console.log(err))
-
-        axiosWithAuth()
+            
+            axiosWithAuth()
             .get(`/api/lists/${id}`)
             .then((res) => {
                 setListName(res.data.data)
             })
-    }, [])
-
+        }, [])
+        
+        console.log('FORM', form)
 
     const handleChange = (e) => {
         setForm({
@@ -51,10 +51,11 @@ function EditList(props) {
                 <h2>{listName.name}</h2>
                 {form.map((item) => {
                     return (
-                        <div key={form.list_id}>
+                        <div key={item.id}>
                             <input
                                 type='text'
-                                name='name'
+                                name={`name${item.id}`}
+                                placeholder={item.name}
                                 value={form.name}
                                 onChange={handleChange}
                             />

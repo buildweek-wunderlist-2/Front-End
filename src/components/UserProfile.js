@@ -82,6 +82,9 @@ const UserProfile = () => {
             })
             .catch(err => {
                 console.log(err)
+                return (
+                    <h1>ERROR</h1>
+                )
             })
     }
 
